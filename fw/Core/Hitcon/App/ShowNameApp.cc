@@ -145,10 +145,28 @@ void ShowNameApp::update_display() {
       strncpy(display_str, num_str, num_len);
       display_str[num_len] = 0;
       break;
-    case Surprise:
-      strncpy(display_str, SURPRISE_NAME, SURPRISE_NAME_LEN);
-      display_str[SURPRISE_NAME_LEN] = 0;
-      break;
+    case WildfootW:
+    {
+      display_buf_t display_buf[DISPLAY_WIDTH];
+      int WildfootW_zh[8][16] = {
+        {1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0, 1, 1, 1, 1, 1},
+        {1, 0, 1, 0, 1, 0, 0, 0, 1, 0, 0, 1, 0, 0, 0, 1},
+        {1, 1, 1, 1, 1, 0, 1, 1, 0, 0, 0, 1, 0, 0, 0, 1},
+        {1, 0, 1, 0, 1, 1, 1, 1, 1, 1, 0, 1, 1, 1, 1, 1},
+        {1, 1, 1, 1, 1, 0, 0, 1, 0, 1, 0, 0, 0, 1, 0, 0},
+        {0, 1, 1, 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 1, 1},
+        {0, 0, 1, 0, 0, 1, 0, 1, 0, 0, 1, 0, 0, 1, 0, 0},
+        {1, 1, 1, 1, 1, 0, 1, 1, 0, 1, 1, 1, 1, 1, 1, 1}
+      };
+      memset(&display_buf, 0, sizeof(display_buf_t) * DISPLAY_WIDTH);
+      for (int i = 0; i < DISPLAY_HEIGHT; ++i) {
+        for (int j = 0; j < DISPLAY_WIDTH; ++j) {
+          display_buf_assign(display_buf[j], i, WildfootW_zh[i][j]);
+        }
+      }
+      display_set_mode_fixed_packed(display_buf);
+      return;
+    }
     default:
       break;
   }

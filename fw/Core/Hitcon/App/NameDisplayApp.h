@@ -11,11 +11,13 @@ namespace hitcon {
 void ChangeToNameScore();
 void ChangeToNameOnly();
 void ChangeToScoreOnly();
+void ChangeToWildfootW();
 
 constexpr menu_entry_t name_display_menu_entries[] = {
     {"Both", nullptr, &ChangeToNameScore},
     {"NameOnly", nullptr, &ChangeToNameOnly},
     {"ScoreOnly", nullptr, &ChangeToScoreOnly},
+    {"WildfootW", nullptr, &ChangeToWildfootW},
 };
 constexpr int name_display_menu_entries_len =
     sizeof(name_display_menu_entries) / sizeof(menu_entry_t);

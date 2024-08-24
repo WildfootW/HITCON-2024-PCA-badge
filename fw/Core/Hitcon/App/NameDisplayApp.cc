@@ -18,6 +18,10 @@ void ChangeToScoreOnly() {
   show_name_app.SetMode(ScoreOnly);
   badge_controller.change_app(&show_name_app);
 }
+void ChangeToWildfootW() {
+  show_name_app.SetMode(WildfootW);
+  badge_controller.change_app(&show_name_app);
+}
 
 void NameDisplayApp::OnButtonMode() {
   badge_controller.change_app(&show_name_app);
